@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #ffffff; /* White background for the page */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align items to the start */
+            height: 100vh; /* Full viewport height */
+        }
+        .login-form {
+            max-width: 600px; /* Increased width of the form */
+            width: 80%; /* Ensure the form takes full width up to max-width */
+            margin-top: 50px; /* Minimum distance from the top */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #87CEEB; /* Sky blue background for the form */
+        }
+        .login-input, .login-select {
+            width: 100%; /* Full width */
+            padding: 5px; /* Reduced padding for minimized height */
+            margin: 5px 0; /* Margin for spacing */
+            border: 1px solid #ccc; /* Border styling */
+            border-radius: 5px; /* Rounded corners */
+            height: 30px; /* Set height for consistency */
+        }
+        .login-button {
+            background-color: #003366; /* Dark blue color */
+            color: white; 
+            padding: 10px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+            width: 100%; /* Make the button full width */
+            height: 40px; /* Set height for consistency */
+        }
+        .register-link {
+            margin-top: 15px; /* Space above the link */
+            text-align: center; /* Center the link */
+        }
+        .register-link a {
+            text-decoration: none; /* Remove underline */
+            color: #003366; /* Dark blue color for the link */
+            font-weight: bold; /* Bold text */
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="{% url 'login' %}" class="login-form">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 15px;">
+            <label for="user_type">Login as:</label>
+            <select name="user_type" id="user_type" class="login-select" required>
+                <option value="employee">Employee</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" class="login-input" placeholder="Enter your username" required>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" class="login-input" placeholder="Enter your password" required>
+        </div>
+        <a href="{% url 'register' %}">
+        <button type="submit" class="login-button">Log In</button>
+        </a>
+        
+        <!-- Link to the registration page -->
+        <div class="register-link">
+            <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+        </div>
+    </form>
+</body>
+</html>

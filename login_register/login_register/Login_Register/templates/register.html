@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        /* Add your styles here */
+        #success-modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+            justify-content: center; /* Center the modal */
+            align-items: center; /* Center the modal */
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 300px;
+            margin: auto;
+        }
+        .errorlist {
+            color: red; /* Style for error messages */
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="{% url 'register' %}" style="max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #87CEEB;">
+        {% csrf_token %}
+        
+        {% if form.errors %}
+            <div class="errorlist">
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        
+        <div style="margin-bottom: 15px;">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" style="width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 5px;" placeholder="Enter your username" required>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="password1">Password:</label>
+            <input type="password" name="password1" id="password1" style="width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 5px;" placeholder="Enter your password" required>
+            <small style="color: #888;">Password must be at least 8 characters long.</small>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="password2">Confirm Password:</label>
+            <input type="password" name="password2" id="password2" style="width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 5px;" placeholder="Confirm your password" required>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="role">User Role:</label>
+            <select name="role" id="role" style="width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 5px;" required>
+                <option value="" disabled selected>Select your role</option>
+                <option value="admin">Admin</option>
+                <option value="employee">Employee</option>
+                <option value="user">User</option>
+            </select>
+        </div>
+        <button type="submit" style="background-color: #003366; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; width: 100%; height: 40px;">Register</button>
+        
+        <!-- Button to go to the login page -->
+        <div style="margin-top: 15px; text-align: center;">
+            <a href="{% url 'login' %}" style="text-decoration: none; color: #003366; font-weight: bold;">Already registered? Log in here</a>
+        </div>
+    </form>
+</body>
+</html>

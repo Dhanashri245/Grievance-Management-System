@@ -1,0 +1,124 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grievance Management System - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6f0ff;
+        }
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            background-color: #00509E;
+            padding: 10px;
+            margin: 0;
+        }
+        nav a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #003366;
+            border-radius: 5px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #003366;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .login-register-section {
+            margin: 20px 0;
+            width: 100%;
+            text-align: center;
+        }
+        .login-register-section h2 {
+            color: #003366;
+        }
+        .login-register-section a {
+            display: block;
+            margin: 10px 0;
+            color: #00509E;
+            text-decoration: none;
+        }
+        .login-register-section a:hover {
+            text-decoration: underline;
+        }
+        .card {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 15px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .button {
+        display: inline-block;
+        background-color: #00509E;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin: 5px 0;
+        transition: background-color 0.3s;
+    }
+    .button:hover {
+        background-color: #cccf0d;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Grievance Management System</h1>
+    </header>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'register' %}">Register</a>
+        <a href="{% url 'login' %}">Login</a>
+    </nav>
+    <div class="container">
+        <h1>Grievance Management System</h1>
+        <!-- home.html -->
+         <p><strong>Welcome to the Grievance Management System.</strong></p>
+        <div class="login-register-section">
+            <h2>Admin Section</h2>
+            <div class="card">
+                <h3>Join Us as an Admin</h3>
+                <p>Register to manage the application and oversee user activities.</p>
+                <a href="{% url 'register_admin' %}" class="button">Register as Admin</a>
+                <a href="{% url 'login_admin' %}" class="button">Login as Admin</a>
+            </div>
+        </div>
+        
+       
+        
+    </div>
+</body>
+</html>
